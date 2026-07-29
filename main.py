@@ -14,7 +14,7 @@ def get_db():
     finally:
         db.close()
 
-
+print("api called")
 
 
 
@@ -22,6 +22,11 @@ def get_db():
 @app.post("/employees", response_model=schemas.EmployeeResponse)
 def create(employee: schemas.EmployeeCreate, db: Session = Depends(get_db)):
     return crud.create_employee(db, employee)
+
+
+
+
+
 
 @app.get("/employees", response_model=list[schemas.EmployeeResponse])
 def read_all(db: Session = Depends(get_db)):
